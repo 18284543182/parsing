@@ -20,4 +20,8 @@ public interface MessageAction<T extends Message> {
         return null;
     }
 
+    default HandlerMessage<?> decode(String data, Class<? extends Message> clazz){
+        return null;
+    }
+
 }

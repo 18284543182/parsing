@@ -26,9 +26,8 @@ public class Handler {
 
         List<String> dataList = new ArrayList<>();
         String[] formatDataArr = this.targetObject.readFile(file);
-
         for (String s:formatDataArr){
-            HandlerMessage<?> message = DecodeBiz.decode(s,this.parameterTypes);
+            HandlerMessage<?> message = this.targetObject.decode(s,this.parameterTypes);
             String res = this.targetObject.doAction(message);
             dataList.add(res);
         }
