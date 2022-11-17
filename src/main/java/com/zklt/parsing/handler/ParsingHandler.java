@@ -15,7 +15,7 @@ public class ParsingHandler {
     @Autowired
     HandlerMapper handlerMapper;
 
-    public String getJsonFilePath(String srcFilePath, String dataType){
+    public String getJsonFilePath(String srcFilePath, String dataType) throws InstantiationException, IllegalAccessException {
         String srcPath = srcFilePath.trim();
         File file = new File(srcPath);
         if (!file.exists()&&!file.isFile()){
