@@ -14,80 +14,80 @@ public class SpaceWeatherMonitoringAceEpam extends Message {
     /**
      * 年
      */
-    private String year;
+    public String year;
 
     /**
      * 月
      */
-    private String month;
+    public String month;
 
     /**
      * 日
      */
-    private String day;
+    public String day;
 
     /**
      * 时分 数据是合在一起的
      */
-    private String hhmm;
+    public String hhmm;
 
     /**
      *
      */
-    private String day1;
+    public String day1;
 
     /**
      *
      */
-    private String day2;
+    public String day2;
 
     /**
      *电子状态
      */
-    private String electronS;
+    public String electronS;
 
     /**
      *电子38-53
      */
-    private String electron1;
+    public String electron1;
 
     /**
      *电子175-315
      */
-    private String electron2;
+    public String electron2;
 
     /**
      *质子状态
      */
-    private String protonS;
+    public String protonS;
 
     /**
      *质子keV47-68
      */
-    private String proton1;
+    public String proton1;
 
     /**
      *质子keV115-195
      */
-    private String proton2;
+    public String proton2;
 
     /**
      *质子keV310-580
      */
-    private String proton3;
+    public String proton3;
 
     /**
      *质子keV795-1193
      */
-    private String proton4;
+    public String proton4;
 
     /**
      *质子keV1060-1900
      */
-    private String proton5;
+    public String proton5;
 
     /**
      *质子keV1060-1900
      */
-    private String index;
+    public String index;
 }

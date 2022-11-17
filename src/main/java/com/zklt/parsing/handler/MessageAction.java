@@ -27,7 +27,9 @@ public interface MessageAction<T extends Message> {
                 String line = null;
                 while((line = br.readLine()) != null)
                 {
-                    result.add(line);
+                    if (!line.startsWith("#")&&!line.startsWith(":")) {
+                        result.add(line);
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();

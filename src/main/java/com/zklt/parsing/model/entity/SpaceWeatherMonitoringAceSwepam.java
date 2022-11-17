@@ -2,14 +2,13 @@ package com.zklt.parsing.model.entity;
 
 import lombok.Data;
 
-import java.util.Date;
-
 /**
- *空间天气检测 ACE文件  高能太阳质子的实时积分通量  参考文件名 202211_ace_sis_1h
+ * @author wurui
+ * @date 2022/11/17 21:58
+ * @Description: 空间天气检测 ACE文件 太阳风等离子体的实时体积参数 参考文件 202211_ace_swepam_1h.txt
  */
-
 @Data
-public class SpaceWeatherMonitoringAceSis {
+public class SpaceWeatherMonitoringAceSwepam {
 
     /**
      * 年
@@ -44,22 +43,20 @@ public class SpaceWeatherMonitoringAceSis {
     /**
      *状态
      */
-    public String s1;
+    public String s;
 
     /**
-     *积分质子通量 > 10 MeV
+     *密度
      */
-    public String integralMev10;
+    public String density;
 
     /**
-     *状态
+     *速度
      */
-    public String s2;
+    public String speed;
 
     /**
-     *积分质子通量 > 30 MeV
+     *温度
      */
-    public String integralMev30;
-
-
+    public String temperature;
 }

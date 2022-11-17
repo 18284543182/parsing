@@ -13,66 +13,66 @@ public class SpaceWeatherMonitoringAceMag extends Message {
     /**
      * 年
      */
-    private String year;
+    public String year;
 
     /**
      * 月
      */
-    private String month;
+    public String month;
 
     /**
      * 日
      */
-    private String day;
+    public String day;
 
     /**
      * 时分 数据是合在一起的
      */
-    private String hhmm;
+    public String hhmm;
 
     /**
      *
      */
-    private String day1;
+    public String day1;
 
     /**
      *
      */
-    private String day2;
+    public String day2;
 
     /**
      *状态
      */
-    private String s;
+    public String s;
 
     /**
      *
      */
-    private String bx;
+    public String bx;
 
     /**
      *
      */
-    private String by;
+    public String by;
 
     /**
      *
      */
-    private String bz;
+    public String bz;
 
     /**
      *
      */
-    private String bt;
+    public String bt;
 
     /**
      *纬度
      */
-    private String lat;
+    public String lat;
 
     /**
      *经度
      */
-    private String lon;
+    public String lon;
 
 }
