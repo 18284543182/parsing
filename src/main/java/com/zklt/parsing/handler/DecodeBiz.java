@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 public class DecodeBiz {
 
     public static  <T extends Message> HandlerMessage<T> decode(String data, Class<? extends Message> clazz){
+
         return null;
     }
 
