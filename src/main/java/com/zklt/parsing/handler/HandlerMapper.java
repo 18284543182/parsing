@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class HandlerMapper implements InitializingBean {
     @Autowired
     List<MessageAction<?>> actionList;
 
-    Map<String, Handler> handlerActionMap;
+    Map<String, Handler> handlerActionMap = new HashMap<>();
 
 
     @Override
