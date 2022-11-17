@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class SpaceWeatherMonitoringAceMag {
+public class SpaceWeatherMonitoringAceMag extends Message {
 
     /**
      * 记录id

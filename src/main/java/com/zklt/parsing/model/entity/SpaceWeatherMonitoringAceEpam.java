@@ -8,7 +8,7 @@ import java.util.Date;
  * 空间天气检测 ACE文件 微分电子和质子通量 参考文件名 202211_ace_epam_1h
  */
 @Data
-public class SpaceWeatherMonitoringAceEpam {
+public class SpaceWeatherMonitoringAceEpam extends Message {
 
     /**
      * 记录id

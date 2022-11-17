@@ -1,4 +1,6 @@
-package com.zklt.parsing.handler.action;
+package com.zklt.parsing.handler;
+
+import com.zklt.parsing.model.enums.FileTypeEnums;
 
 import java.io.File;
 
@@ -16,6 +18,15 @@ public class ParsingHandler {
             return null;
         }
         //获取文件后缀
+        String type = getFileType(srcPath);
+        if (FileTypeEnums.COMMON.getFileType().contains(type)){
 
+        }
+        return null;
+    }
+
+    private String getFileType(String path){
+        String[] paths = path.split("\\.");
+        return paths[paths.length-1];
     }
 }
