@@ -3,7 +3,9 @@ package com.zklt.parsing.handler;
 import com.zklt.parsing.model.entity.HandlerMessage;
 import com.zklt.parsing.model.entity.Message;
 
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jhzhu
@@ -16,8 +18,24 @@ public interface MessageAction<T extends Message> {
 
     String doAction(HandlerMessage<T> message);
 
-    default String[] readFile(File file){
-        return null;
+    default List<String> readFile(File file){
+        List<String> result = new ArrayList<>();
+        if(file.exists())
+        {
+            try (InputStreamReader input = new InputStreamReader(new FileInputStream(file), "utf-8"); BufferedReader br = new BufferedReader(input);){
+                String line = null;
+                while((line = br.readLine()) != null)
+                {
+                    result.add(line);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+        return result;
     }
 
 }
