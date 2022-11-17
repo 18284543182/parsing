@@ -1,8 +1,12 @@
 package com.zklt.parsing.handler;
 
+import com.zklt.parsing.model.entity.HandlerMessage;
 import com.zklt.parsing.model.enums.FileTypeEnums;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jhzhu
@@ -11,22 +15,16 @@ import java.io.File;
  */
 public class ParsingHandler {
 
-    public String getJsonFilePath(String srcFilePath){
+    @Autowired
+    HandlerMapper handlerMapper;
+
+    public String getJsonFilePath(String srcFilePath, String dataType){
         String srcPath = srcFilePath.trim();
         File file = new File(srcPath);
         if (!file.exists()&&!file.isFile()){
             return null;
         }
-        //获取文件后缀
-        String type = getFileType(srcPath);
-        if (FileTypeEnums.COMMON.getFileType().contains(type)){
-
-        }
-        return null;
+        return handlerMapper.getHandlerActionMap().get(dataType).getResPath(file);
     }
 
-    private String getFileType(String path){
-        String[] paths = path.split("\\.");
-        return paths[paths.length-1];
-    }
 }
