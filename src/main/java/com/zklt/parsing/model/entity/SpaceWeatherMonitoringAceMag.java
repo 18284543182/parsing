@@ -11,14 +11,24 @@ import java.util.Date;
 public class SpaceWeatherMonitoringAceMag extends Message {
 
     /**
-     * 记录id
+     * 年
      */
-    private String dRecordId;
+    private String year;
 
     /**
-     * 记录时间
+     * 月
      */
-    private Date dIymdhm;
+    private String month;
+
+    /**
+     * 日
+     */
+    private String day;
+
+    /**
+     * 时分 数据是合在一起的
+     */
+    private String hhmm;
 
     /**
      *
