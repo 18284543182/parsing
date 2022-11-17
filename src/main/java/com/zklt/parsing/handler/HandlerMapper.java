@@ -1,5 +1,6 @@
 package com.zklt.parsing.handler;
 
+import com.zklt.parsing.model.enums.Mapper;
 import lombok.Data;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,12 @@ public class HandlerMapper implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         if (CollectionUtils.isEmpty(actionList)) return;
         for (MessageAction<?> action:actionList){
-
+            Class<?> beanClazz = action.getClass();
+            Mapper annotation = beanClazz.getAnnotation(Mapper.class);
+            Handler handler = new Handler();
+            handler.setParameterTypes(annotation.getAction());
+            handler.setTargetObject(action);
+            handlerActionMap.put(annotation.type(),handler);
         }
     }
 }
