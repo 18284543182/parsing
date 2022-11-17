@@ -3,12 +3,13 @@ package com.zklt.parsing.model.entity;
 import lombok.Data;
 
 import java.util.Date;
+
 /**
- *空间天气检测 ACE文件  行星间磁场值  参考文件名 202211_ace_mag_1h
+ *空间天气检测 ACE文件  高能太阳质子的实时积分通量  参考文件名 202211_ace_sis_1h
  */
 
 @Data
-public class SpaceWeatherMonitoringAceMag extends Message {
+public class SpaceWeatherMonitoringAceSis {
 
     /**
      * 记录id
@@ -36,33 +37,14 @@ public class SpaceWeatherMonitoringAceMag extends Message {
     private String s;
 
     /**
-     *
+     *积分质子通量 > 10 MeV
      */
-    private String bx;
+    private String integralMev10;
 
     /**
-     *
+     *积分质子通量 > 30 MeV
      */
-    private String by;
+    private String integralMev30;
 
-    /**
-     *
-     */
-    private String bz;
-
-    /**
-     *
-     */
-    private String bt;
-
-    /**
-     *纬度
-     */
-    private String lat;
-
-    /**
-     *经度
-     */
-    private String lon;
 
 }
