@@ -41,7 +41,7 @@ public interface MessageAction<T extends Message> {
 
     default HandlerMessage<T> decode(String data, Class<T> clazz) throws InstantiationException, IllegalAccessException {
         //把多个空格转换为一个空格
-        data = data.trim();
+        data = data.trim().replaceAll(" +", " ");
         String[] dates = data.split(" ");
         if (dates.length!=clazz.getFields().length){
             return null;
