@@ -10,15 +10,26 @@ import java.util.Date;
 @Data
 public class SpaceWeatherMonitoringAceEpam extends Message {
 
-    /**
-     * 记录id
-     */
-    private String dRecordId;
 
     /**
-     * 记录时间
+     * 年
      */
-    private Date dIymdhm;
+    private String year;
+
+    /**
+     * 月
+     */
+    private String month;
+
+    /**
+     * 日
+     */
+    private String day;
+
+    /**
+     * 时分 数据是合在一起的
+     */
+    private String hhmm;
 
     /**
      *

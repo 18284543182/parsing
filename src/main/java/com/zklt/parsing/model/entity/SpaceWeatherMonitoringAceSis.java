@@ -12,14 +12,24 @@ import java.util.Date;
 public class SpaceWeatherMonitoringAceSis {
 
     /**
-     * 记录id
+     * 年
      */
-    private String dRecordId;
+    private String year;
 
     /**
-     * 记录时间
+     * 月
      */
-    private Date dIymdhm;
+    private String month;
+
+    /**
+     * 日
+     */
+    private String day;
+
+    /**
+     * 时分 数据是合在一起的
+     */
+    private String hhmm;
 
     /**
      *
@@ -34,12 +44,17 @@ public class SpaceWeatherMonitoringAceSis {
     /**
      *状态
      */
-    private String s;
+    private String s1;
 
     /**
      *积分质子通量 > 10 MeV
      */
     private String integralMev10;
+
+    /**
+     *状态
+     */
+    private String s2;
 
     /**
      *积分质子通量 > 30 MeV
