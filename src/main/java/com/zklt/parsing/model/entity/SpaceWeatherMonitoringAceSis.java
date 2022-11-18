@@ -9,7 +9,7 @@ import java.util.Date;
  */
 
 @Data
-public class SpaceWeatherMonitoringAceSis {
+public class SpaceWeatherMonitoringAceSis extends Message{
 
     /**
      * 年
