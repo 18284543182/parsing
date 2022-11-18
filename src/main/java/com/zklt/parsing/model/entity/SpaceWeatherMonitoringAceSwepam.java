@@ -8,7 +8,7 @@ import lombok.Data;
  * @Description: 空间天气检测 ACE文件 太阳风等离子体的实时体积参数 参考文件 202211_ace_swepam_1h.txt
  */
 @Data
-public class SpaceWeatherMonitoringAceSwepam {
+public class SpaceWeatherMonitoringAceSwepam extends Message{
 
     /**
      * 年
