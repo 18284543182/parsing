@@ -87,7 +87,7 @@ public class SpaceWeatherMonitoringAceEpam extends Message {
     public String proton5;
 
     /**
-     *质子keV1060-1900
+     *
      */
     public String index;
 }

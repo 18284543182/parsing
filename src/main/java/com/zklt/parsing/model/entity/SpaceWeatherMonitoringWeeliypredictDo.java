@@ -24,10 +24,10 @@ public class SpaceWeatherMonitoringWeeliypredictDo extends Message{
      */
     public String day;
 
-    public String RadioFlux;
+    public String radioFlux;
 
-    public String PlanetaryA;
+    public String planetaryA;
 
-    public String LargestKp;
+    public String largestKp;
 
 }

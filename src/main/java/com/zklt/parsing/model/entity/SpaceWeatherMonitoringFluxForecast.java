@@ -2,6 +2,8 @@ package com.zklt.parsing.model.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author wurui
  * @date 2022/11/18 10:20
@@ -13,7 +15,7 @@ public class SpaceWeatherMonitoringFluxForecast extends Message{
     /**
      * 时间
      */
-    public String time;
+    public Date time;
 
 
     /**
