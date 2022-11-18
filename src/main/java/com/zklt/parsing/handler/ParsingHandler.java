@@ -50,7 +50,7 @@ public class ParsingHandler {
             return null;
         }
         String resStr = JSONArray.toJSONString(list);
-        String filePath = path + fileName + fileType + "-" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String filePath = path + fileName + "-" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + fileType;
         BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
         out.write(resStr);
         out.close();

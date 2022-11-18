@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
-@Mapper(type = "Mag", getAction = SpaceWeatherMonitoringAceMag.class)
+@Mapper(type = "SpaceWeatherMonitoringAceMagAction", getAction = SpaceWeatherMonitoringAceMag.class)
 public class SpaceWeatherMonitoringAceMagAction implements MessageAction<SpaceWeatherMonitoringAceMag> {
 
     @Override

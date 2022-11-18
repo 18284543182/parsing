@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
-@Mapper(type = "Epam", getAction = SpaceWeatherMonitoringAceEpam.class)
+@Mapper(type = "SpaceWeatherMonitoringAceEpam", getAction = SpaceWeatherMonitoringAceEpam.class)
 public class SpaceWeatherMonitoringAceEpamAction implements MessageAction<SpaceWeatherMonitoringAceEpam> {
     @Override
     public Object doAction(HandlerMessage<SpaceWeatherMonitoringAceEpam> message) {
