@@ -9,6 +9,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,8 +29,9 @@ public interface MessageAction<T extends Message> {
         {
             try (InputStreamReader input = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8); BufferedReader br = new BufferedReader(input)){
                 String line = null;
+                //避免数据中间出现空格所以获取数据总行数进行遍历
                 long countLine = Files.lines(file.toPath()).count();
-                for (int i = 0;i<countLine;i++){
+                for (int i = 0;i<countLine+1;i++){
                     line = br.readLine();
                     if (!StringUtils.isEmpty(line) &&!line.startsWith("#")&&!line.startsWith(":")) {
                         result.add(line);
