@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,28 +28,44 @@ public class ParsingHandler {
     private String fileType;
 
     @Autowired
-    HandlerMapper handlerMapper;
+    private HandlerMapper handlerMapper;
 
     public String getJsonFilePath(String srcFilePath, String dataType) throws InstantiationException, IllegalAccessException, IOException {
         String srcPath = srcFilePath.trim();
+        String[] pathArr = srcPath.split("\\.");
         File file = new File(srcPath);
+        if (pathArr[pathArr.length-1].equals("json")&&checkJsonObjectFile(file)){
+            return srcFilePath;
+        }
         if (!file.exists()&&!file.isFile()){
             return null;
         }
-        List<String> resList = handlerMapper.getHandlerActionMap().get(dataType).getResPath(file);
+        List<Object> resList = handlerMapper.getHandlerActionMap().get(dataType).getResPath(file);
 
         return getLocalPath(resList, dataType);
     }
 
-    private String getLocalPath(List<String> list, String fileName) throws IOException {
+    private String getLocalPath(List<Object> list, String fileName) throws IOException {
         if (CollectionUtils.isEmpty(list)){
             return null;
         }
         String resStr = JSONArray.toJSONString(list);
-        String filePath = path + fileName + fileType;
+        String filePath = path + fileName + fileType + "-" + new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         BufferedWriter out = new BufferedWriter(new FileWriter(filePath));
         out.write(resStr);
         out.close();
         return filePath;
+    }
+
+    private boolean checkJsonObjectFile(File file) throws IOException {
+        InputStreamReader input = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8);
+        BufferedReader br = new BufferedReader(input);
+        String line = null;
+        while((line = br.readLine()) != null) {
+            if (line.contains("}")){
+                return true;
+            }
+        }
+        return false;
     }
 }
