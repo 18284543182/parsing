@@ -62,7 +62,7 @@ public class ParsingHandler {
         BufferedReader br = new BufferedReader(input);
         String line = null;
         while((line = br.readLine()) != null) {
-            if (line.contains("}")){
+            if (line.contains("{")){
                 return true;
             }
         }
