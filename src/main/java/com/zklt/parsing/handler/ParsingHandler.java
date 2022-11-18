@@ -30,7 +30,7 @@ public class ParsingHandler {
     @Autowired
     private HandlerMapper handlerMapper;
 
-    public String getJsonFilePath(String srcFilePath, String dataType) throws InstantiationException, IllegalAccessException, IOException {
+    public List<Object> getDataList(String srcFilePath, String dataType) throws IOException, InstantiationException, IllegalAccessException {
         String srcPath = srcFilePath.trim();
         String[] pathArr = srcPath.split("\\.");
         File file = new File(srcPath);
@@ -38,11 +38,13 @@ public class ParsingHandler {
             return null;
         }
         if (pathArr[pathArr.length-1].equals("json")&&checkJsonObjectFile(file)){
-            return srcFilePath;
+            return null;
         }
-        List<Object> resList = handlerMapper.getHandlerActionMap().get(dataType).getResPath(file);
+        return handlerMapper.getHandlerActionMap().get(dataType).getResPath(file);
+    }
 
-        return getLocalPath(resList, dataType);
+    public String getJsonFilePath(String srcFilePath, String dataType) throws InstantiationException, IllegalAccessException, IOException {
+        return getLocalPath(getDataList(srcFilePath, dataType), dataType);
     }
 
     private String getLocalPath(List<Object> list, String fileName) throws IOException {
