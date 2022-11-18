@@ -2,14 +2,15 @@ package com.zklt.parsing.handler;
 
 import com.zklt.parsing.model.entity.HandlerMessage;
 import com.zklt.parsing.model.entity.Message;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
