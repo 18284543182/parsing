@@ -22,7 +22,7 @@ public class Handler {
     public Handler() {
     }
 
-    public String getResPath(File file) throws InstantiationException, IllegalAccessException {
+    public List<String> getResPath(File file) throws InstantiationException, IllegalAccessException {
 
         List<String> dataList = new ArrayList<>();
         List<String> formatDataArr = this.targetObject.readFile(file);
@@ -32,11 +32,8 @@ public class Handler {
             String res = this.targetObject.doAction(message);
             dataList.add(res);
         }
-        return getLocalPath(dataList);
+        return dataList;
     }
 
-    private String getLocalPath(List<String> list){
-        return null;
-    }
 
 }

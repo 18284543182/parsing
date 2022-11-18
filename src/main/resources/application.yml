@@ -1,2 +1,9 @@
 server:
   port: 1111
+
+
+target:
+  result:
+    #\\或者/结尾
+    path: d:\\
+    type: .txt
