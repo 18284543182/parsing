@@ -1,6 +1,7 @@
 package com.zklt.parsing.handler;
 
 import com.alibaba.fastjson.JSONArray;
+import com.zklt.parsing.model.entity.SpaceWeatherMonitoringAceEpam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
