@@ -25,7 +25,7 @@ public interface MessageAction<T extends Message> {
         List<String> result = new ArrayList<>();
         if(file.exists())
         {
-            try (InputStreamReader input = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8); BufferedReader br = new BufferedReader(input);){
+            try (InputStreamReader input = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8); BufferedReader br = new BufferedReader(input)){
                 String line = null;
                 while((line = br.readLine()) != null)
                 {
