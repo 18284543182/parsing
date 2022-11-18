@@ -12,4 +12,6 @@ public class HandlerMessage<T> {
 
     private T message;
 
+    private String srcFilePath;
+
 }
