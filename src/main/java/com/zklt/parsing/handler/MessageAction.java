@@ -5,6 +5,8 @@ import com.zklt.parsing.model.entity.Message;
 
 import java.io.*;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public interface MessageAction<T extends Message> {
         List<String> result = new ArrayList<>();
         if(file.exists())
         {
-            try (InputStreamReader input = new InputStreamReader(new FileInputStream(file), "utf-8"); BufferedReader br = new BufferedReader(input);){
+            try (InputStreamReader input = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8); BufferedReader br = new BufferedReader(input);){
                 String line = null;
                 while((line = br.readLine()) != null)
                 {
