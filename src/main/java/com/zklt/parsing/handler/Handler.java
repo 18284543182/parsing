@@ -22,14 +22,14 @@ public class Handler {
     public Handler() {
     }
 
-    public List<String> getResPath(File file) throws InstantiationException, IllegalAccessException {
+    public List<Object> getResPath(File file) throws InstantiationException, IllegalAccessException {
 
-        List<String> dataList = new ArrayList<>();
+        List<Object> dataList = new ArrayList<>();
         List<String> formatDataArr = this.targetObject.readFile(file);
 
         for (String s:formatDataArr){
             HandlerMessage<?> message = this.targetObject.decode(s,this.parameterTypes);
-            String res = this.targetObject.doAction(message);
+            Object res = this.targetObject.doAction(message);
             dataList.add(res);
         }
         return dataList;

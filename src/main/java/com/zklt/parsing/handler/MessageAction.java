@@ -19,7 +19,7 @@ import java.util.List;
 public interface MessageAction<T extends Message> {
 
 
-    String doAction(HandlerMessage<T> message);
+    Object doAction(HandlerMessage<T> message);
 
     default List<String> readFile(File file){
         List<String> result = new ArrayList<>();

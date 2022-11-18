@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
-@Mapper(type = "Mag", getAction = SpaceWeatherMonitoringAceMag.class)
+@Mapper(type = "SpaceWeatherMonitoringAceMagAction", getAction = SpaceWeatherMonitoringAceMag.class)
 public class SpaceWeatherMonitoringAceMagAction implements MessageAction<SpaceWeatherMonitoringAceMag> {
 
     @Override
-    public String doAction(HandlerMessage<SpaceWeatherMonitoringAceMag> message) {
-        SpaceWeatherMonitoringAceMag spaceWeatherMonitoringAceMag=message.getMessage();
-        return JSON.toJSONString(spaceWeatherMonitoringAceMag);
+    public Object doAction(HandlerMessage<SpaceWeatherMonitoringAceMag> message) {
+
+        return JSON.toJSONString(message.getMessage());
     }
 }

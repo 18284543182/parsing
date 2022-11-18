@@ -6,4 +6,5 @@ target:
   result:
     #\\或者/结尾
     path: d:\\
-    type: .txt
+    #输出文件格式：类名+时间（yyyyMMddHHmmss）.json
+    type: .json
