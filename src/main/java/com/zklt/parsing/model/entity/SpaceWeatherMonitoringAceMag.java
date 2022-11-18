@@ -46,7 +46,7 @@ public class SpaceWeatherMonitoringAceMag extends Message {
     public String s;
 
     /**
-     *
+     *坐标
      */
     public String bx;
 

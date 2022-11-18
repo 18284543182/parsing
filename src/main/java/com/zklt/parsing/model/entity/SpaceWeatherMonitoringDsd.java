@@ -25,12 +25,12 @@ public class SpaceWeatherMonitoringDsd extends Message{
     public String day;
 
     /**
-     *
+     *通量
      */
     public String flux;
 
     /**
-     *
+     *太阳黑子数
      */
     public String sunspotNumber;
 
@@ -40,40 +40,40 @@ public class SpaceWeatherMonitoringDsd extends Message{
     public String hemis;
 
     /**
-     *
+     *区域
      */
     public String regions;
 
 
     /**
-     *
+     *平均通量
      */
     public String meanField;
 
     /**
-     *
+     *Bkgd通量
      */
     public String bkgdFlux;
 
     /**
      *
      */
-    public String Xrayc;
+    public String xrayc;
 
     /**
      *
      */
-    public String Xraym;
+    public String xraym;
 
     /**
      *
      */
-    public String Xrayx;
+    public String xrayx;
 
     /**
      *
      */
-    public String Xrays;
+    public String xrays;
 
     /**
      *

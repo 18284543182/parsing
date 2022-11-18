@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class SpaceWeatherMonitoringDscovr extends Message{
 
-    public String time_tag;
+    public String timeTag;
 
     public String density;
 
