@@ -35,11 +35,11 @@ public class ParsingHandler {
         String srcPath = srcFilePath.trim();
         String[] pathArr = srcPath.split("\\.");
         File file = new File(srcPath);
-        if (pathArr[pathArr.length-1].equals("json")&&checkJsonObjectFile(file)){
-            return srcFilePath;
-        }
         if (!file.exists()&&!file.isFile()){
             return null;
+        }
+        if (pathArr[pathArr.length-1].equals("json")&&checkJsonObjectFile(file)){
+            return srcFilePath;
         }
         List<Object> resList = handlerMapper.getHandlerActionMap().get(dataType).getResPath(file);
 
