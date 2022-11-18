@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class SpaceWeatherMonitoringAceSwepamAction implements MessageAction<SpaceWeatherMonitoringAceSwepam> {
     @Override
     public Object doAction(HandlerMessage<SpaceWeatherMonitoringAceSwepam> message) {
+        message.getMessage().setPath(message.getSrcFilePath());
         return message.getMessage();
     }
 }

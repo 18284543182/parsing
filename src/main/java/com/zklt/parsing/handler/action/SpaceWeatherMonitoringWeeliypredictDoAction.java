@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class SpaceWeatherMonitoringWeeliypredictDoAction implements MessageAction<SpaceWeatherMonitoringWeeliypredictDo> {
     @Override
     public Object doAction(HandlerMessage<SpaceWeatherMonitoringWeeliypredictDo> message) {
+        message.getMessage().setPath(message.getSrcFilePath());
         return message.getMessage();
     }
 }

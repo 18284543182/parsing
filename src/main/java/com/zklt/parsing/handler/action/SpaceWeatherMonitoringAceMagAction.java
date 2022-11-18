@@ -17,6 +17,7 @@ public class SpaceWeatherMonitoringAceMagAction implements MessageAction<SpaceWe
 
     @Override
     public SpaceWeatherMonitoringAceMag doAction(HandlerMessage<SpaceWeatherMonitoringAceMag> message) {
+        message.getMessage().setPath(message.getSrcFilePath());
         return message.getMessage();
     }
 }

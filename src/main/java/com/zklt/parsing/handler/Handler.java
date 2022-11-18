@@ -30,6 +30,7 @@ public class Handler {
 
         for (String s:formatDataArr){
             HandlerMessage<?> message = this.targetObject.decode(s,this.parameterTypes);
+            message.setSrcFilePath(file.getPath());
             Object res = this.targetObject.doAction(message);
             dataList.add(res);
         }

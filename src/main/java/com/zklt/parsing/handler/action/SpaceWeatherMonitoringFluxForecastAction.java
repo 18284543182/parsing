@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class SpaceWeatherMonitoringFluxForecastAction implements MessageAction<SpaceWeatherMonitoringFluxForecast> {
     @Override
     public Object doAction(HandlerMessage<SpaceWeatherMonitoringFluxForecast> message) {
+        message.getMessage().setPath(message.getSrcFilePath());
         return message.getMessage();
     }
 }

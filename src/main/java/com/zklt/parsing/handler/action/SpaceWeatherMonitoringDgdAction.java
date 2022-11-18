@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class SpaceWeatherMonitoringDgdAction implements MessageAction<SpaceWeatherMonitoringDgd> {
     @Override
     public Object doAction(HandlerMessage<SpaceWeatherMonitoringDgd> message) {
+        message.getMessage().setPath(message.getSrcFilePath());
         return message.getMessage();
     }
 }
