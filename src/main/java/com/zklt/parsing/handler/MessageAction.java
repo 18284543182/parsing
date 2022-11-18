@@ -28,7 +28,7 @@ public interface MessageAction<T extends Message> {
         {
             try (InputStreamReader input = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8); BufferedReader br = new BufferedReader(input)){
                 String line = null;
-                long countLine = Files.lines(file.toPath()).count();
+                long countLine = Files.lines(file.toPath()).count()+1;
                 for (int i = 0;i<countLine;i++){
                     line = br.readLine();
                     if (!StringUtils.isEmpty(line) &&!line.startsWith("#")&&!line.startsWith(":")) {
