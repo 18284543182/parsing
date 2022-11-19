@@ -60,12 +60,6 @@ public class SpaceWeatherMonitoringApaAndF107ValueAction implements MessageActio
         return result;
     }
 
-    public String getLine(StringBuffer line,BufferedReader br ) throws IOException {
-            line.append(br.readLine());
-
-        return line.toString();
-    }
-
     public boolean checkLine(String line) {
          return !StringUtils.isEmpty(line) &&
                  !line.startsWith("#") &&
