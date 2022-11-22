@@ -34,7 +34,7 @@ public interface MessageAction<T extends Message> {
                 long countLine = Files.lines(file.toPath()).count();
                 for (int i = 0;i<countLine+1;i++){
                     line = br.readLine();
-                    if (!StringUtils.isEmpty(line) &&!line.startsWith("#")&&!line.startsWith(":")) {
+                    if (!StringUtils.isEmpty(line) &&!line.startsWith("#")&&!line.startsWith(":")&&!line.startsWith("YYYY")) {
                         result.add(line);
                     }
 
