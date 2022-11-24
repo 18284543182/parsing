@@ -1,11 +1,13 @@
 package com.zklt.parsing;
 
+import com.zklt.parsing.handler.JsonTestHandler;
 import com.zklt.parsing.handler.ParsingHandler;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
+import java.util.List;
 
 @SpringBootTest
 class ParsingApplicationTests {
@@ -13,11 +15,13 @@ class ParsingApplicationTests {
 	@Autowired
 	ParsingHandler parsingHandler;
 
+	@Autowired
+	JsonTestHandler jsonTestHandler;
+
 	@Test
 	void contextLoads() throws IOException, InstantiationException, IllegalAccessException {
 
-		String ll = parsingHandler.getJsonFilePath("C:\\Users\\xj\\Desktop\\空间天气1119 (2)\\空间天气1119\\激光雷达\\激光雷达-大气密度\\zwdata.20221119181017.26130\\HFT_LID01_DAM_L21_01D_20150101000000.dat","SpaceWeatherMonitoringAtmosphericDensity");
-//		String ll = parsingHandler.getJsonFilePath("C:\\Users\\xj\\Desktop\\空间天气监测\\20221104\\Ace\\202211_ace_epam_1h.txt","SpaceWeatherMonitoringAceEpam");
+		List<Object> ll= jsonTestHandler.getDataList("E:\\气象数据\\空间天气1122\\电离层电子密度剖面\\MHT_DPS01_IIG_L31_STP_20220531214500.PNG","SpaceWeatherElectronDensity");
 		System.out.println(ll);
 	}
 

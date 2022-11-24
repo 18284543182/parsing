@@ -3,27 +3,32 @@ package com.zklt.parsing.model.entity;
 import lombok.Data;
 
 /**
- * @author wurui
- * @date 2022/11/24 20:34
- * @Description:  空间天气1122\单站实时-foF2、电离层最高可用频率 	电离层垂测数据
+ * @author xiejian
+ * @date 2022/11/24 10:23
+ * @Description: 空间天气1122\单站实时-foF2、电离层最高可用频率
  */
 @Data
-public class SpaceWeatherIonosoude extends Message{
+public class SpaceWeatherIonoSoude extends Message{
+
 
     /**
-     * 台站代码
+     * 站点编号
      */
     public String stationCode;
 
-    public String date;
+    /**
+     * 年月日
+     */
+    public String fisrtDate;
 
-    public String time;
+    /**
+     * 时分秒
+     */
+    public String lastDate;
 
-    public String fof2;
+    /**
+     * S4_L
+     */
+    public String s4l;
 
-    public String m3000;
-
-    public String fmin;
-
-    public String value;
 }
