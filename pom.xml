@@ -65,19 +65,16 @@
 			<artifactId>jcdf</artifactId>
 			<version>1.2.4</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>com.zklt</groupId>-->
-<!--			<artifactId>parsing</artifactId>-->
-<!--			<version>0.0.1-SNAPSHOT</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.zklt</groupId>
+			<artifactId>parsing</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
 			<artifactId>okhttp</artifactId>
 			<version>4.9.3</version>
 		</dependency>
-
-
-
 	</dependencies>
 
 	<build>
