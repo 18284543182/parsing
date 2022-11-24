@@ -48,6 +48,7 @@ public class SpaceWeatherIonosoudesAction implements MessageAction<SpaceWeatherI
                         line=line.replace("/","-");
                         result.add(line);
 
+
                     }
 
                 }
