@@ -65,16 +65,18 @@
 			<artifactId>jcdf</artifactId>
 			<version>1.2.4</version>
 		</dependency>
-		<dependency>
-			<groupId>com.zklt</groupId>
-			<artifactId>parsing</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.zklt</groupId>-->
+<!--			<artifactId>parsing</artifactId>-->
+<!--			<version>0.0.1-SNAPSHOT</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>
 			<artifactId>okhttp</artifactId>
 			<version>4.9.3</version>
 		</dependency>
+
+
 
 	</dependencies>
 
@@ -84,7 +86,24 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<classifier>exec</classifier>
+					<!--项目的启动类-->
+					<mainClass>com.zklt.parsing.ParsingApplication</mainClass>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<compilerArgs>
+						<!-- 过期方法警告 -->
+						<arg>-Xlint:deprecation</arg>
+					</compilerArgs>
+					<compilerArguments>
+						<bootclasspath>${java.home}\lib\rt.jar;${java.home}\lib\jce.jar</bootclasspath>
+					</compilerArguments>
 				</configuration>
 			</plugin>
 		</plugins>
