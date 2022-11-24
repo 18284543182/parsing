@@ -2,8 +2,7 @@ package com.zklt.parsing.handler.action;
 
 import com.zklt.parsing.handler.MessageAction;
 import com.zklt.parsing.model.entity.HandlerMessage;
-import com.zklt.parsing.model.entity.SpaceWeatherIonosoude;
-import com.zklt.parsing.model.entity.SpaceWeatherRadioShidao;
+import com.zklt.parsing.model.entity.SpaceWeatherIonosoudes;
 import com.zklt.parsing.model.enums.Mapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -23,10 +22,10 @@ import java.util.List;
  * @Description:
  */
 @Service
-@Mapper(type = "SpaceWeatherIonosoude", getAction = SpaceWeatherIonosoude.class)
-public class SpaceWeatherIonosoudeAction implements MessageAction<SpaceWeatherIonosoude> {
+@Mapper(type = "SpaceWeatherIonosoude", getAction = SpaceWeatherIonosoudes.class)
+public class SpaceWeatherIonosoudesAction implements MessageAction<SpaceWeatherIonosoudes> {
     @Override
-    public Object doAction(HandlerMessage<SpaceWeatherIonosoude> message) {
+    public Object doAction(HandlerMessage<SpaceWeatherIonosoudes> message) {
         message.getMessage().setPath(message.getSrcFilePath());
         return message.getMessage();
     }
