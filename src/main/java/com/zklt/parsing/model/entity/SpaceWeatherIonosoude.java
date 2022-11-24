@@ -1,5 +1,6 @@
 package com.zklt.parsing.model.entity;
 
+
 import lombok.Data;
 
 /**
