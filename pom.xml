@@ -60,11 +60,11 @@
 			<version>4.5.5</version>
 		</dependency>
 		<!-- 读取 .cdf 文件 -->
-<!--		<dependency>-->
-<!--			<groupId>uk.ac.starlink</groupId>-->
-<!--			<artifactId>jcdf</artifactId>-->
-<!--			<version>1.2.4</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>uk.ac.starlink</groupId>
+			<artifactId>jcdf</artifactId>
+			<version>1.2.4</version>
+		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>com.zklt</groupId>-->
 <!--			<artifactId>parsing</artifactId>-->
@@ -102,6 +102,33 @@
 						<bootclasspath>${java.home}\lib\rt.jar;${java.home}\lib\jce.jar</bootclasspath>
 					</compilerArguments>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.5</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.zklt.parsing.ParsingApplication</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+				<!-- 添加此项后，可直接使用mvn package | mvn install -->
+				<!-- 不添加此项，需直接使用mvn package assembly:single -->
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
