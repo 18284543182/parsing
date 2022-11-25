@@ -47,14 +47,6 @@ public class AvgElectronFluxTabAction implements MessageAction<AvgElectronFluxTa
         List<String> result = new ArrayList<>();
         String filename=file.getPath();
 
-        int val = filename.indexOf("空间天气要素");
-        String topFileName = filename.substring(val, val + 6).replace(" ","");
-        String typeFileName = filename.substring(val + 7, val + 13).replace(" ","");
-        String goesSatelliteName = filename.substring(val + 14, val + 20).replace(" ","");
-        String fiveMinFileName = filename.substring(val + 21, val + 30).replace(" ","");
-        String year = filename.substring(val + 31, val + 35).replace(" ","");
-        String ncFileName = filename.substring(val + 36, filename.length()).replace(" ","");
-
         List<AvgElectronFluxTab> list = new ArrayList<>();
         NetcdfFile ncfile = null;
         try {
@@ -85,8 +77,7 @@ public class AvgElectronFluxTabAction implements MessageAction<AvgElectronFluxTa
                         String[] datetime=DateUtil.date2Str(newDate).split(" ");
                         String datee=datetime[0];
                         String time=datetime[1];
-                        String returnstrs=topFileName+" "+typeFileName+" "+goesSatelliteName+" "+fiveMinFileName+" "+
-                                year+" "+ncFileName+" "+ident+" "+datee+" "+time;
+                        String returnstrs=ident+" "+datee+" "+time;
                         for (int i = 0; i < toNewArr[j].length; i++) {
                             String restr=returnstrs+" "+String.valueOf(toNewArr[j][0])+" "+String.valueOf(toNewArr[j][1])+" "+
                                     String.valueOf(toNewArr[j][2])+" "+String.valueOf(toNewArr[j][3])+" "+

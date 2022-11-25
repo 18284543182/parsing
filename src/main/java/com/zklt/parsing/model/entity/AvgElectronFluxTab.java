@@ -11,35 +11,8 @@ import java.util.Date;
  */
 @Data
 public class AvgElectronFluxTab extends Message{
-    /**
-     * 顶层文件名
-     */
-    public String topFileName;
 
-    /**
-     * 类型文件名
-     */
-    public String typeFileName;
 
-    /**
-     * 卫星名称（美国noaa的GOES卫星）
-     */
-    public String goesSatelliteName;
-
-    /**
-     * 5min 类型文件名(例:电子通量、质子通量)
-     */
-    public String fiveMinFileName;
-
-    /**
-     * 年份
-     */
-    public String year;
-
-    /**
-     * nc文件名
-     */
-    public String ncFileName;
 
 
     /**
