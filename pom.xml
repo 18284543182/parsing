@@ -60,11 +60,11 @@
 			<version>4.5.5</version>
 		</dependency>
 		<!-- 读取 .cdf 文件 -->
-		<dependency>
-			<groupId>uk.ac.starlink</groupId>
-			<artifactId>jcdf</artifactId>
-			<version>1.2.4</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>uk.ac.starlink</groupId>-->
+<!--			<artifactId>jcdf</artifactId>-->
+<!--			<version>1.2.4</version>-->
+<!--		</dependency>-->
 <!--		<dependency>-->
 <!--			<groupId>com.zklt</groupId>-->
 <!--			<artifactId>parsing</artifactId>-->
