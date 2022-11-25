@@ -27,5 +27,6 @@ public class SpaceWeatherIonosoudes extends Message{
     public String fmin;
 
 
+
     public String value;
 }
