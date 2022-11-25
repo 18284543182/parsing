@@ -17,6 +17,7 @@ public class SpaceWeatherIonoSoude extends Message{
      */
     public String stationCode;
 
+
     /**
      * 年月日
      */
