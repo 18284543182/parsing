@@ -1,5 +1,6 @@
 package com.zklt.parsing.handler;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +11,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +40,8 @@ public class ParsingHandler {
             return null;
         }
         if (pathArr[pathArr.length-1].equals("json")&&checkJsonObjectFile(file)){
-            return null;
+            List<Object> objects= JsonObject(file);
+            return objects;
         }
         return handlerMapper.getHandlerActionMap().get(dataType).getResPath(file);
     }
@@ -69,5 +72,14 @@ public class ParsingHandler {
             }
         }
         return false;
+    }
+    private List<Object> JsonObject(File file) throws IOException {
+        List<Object> objects=new ArrayList<>();
+        InputStreamReader input = new InputStreamReader(Files.newInputStream(file.toPath()), StandardCharsets.UTF_8);
+        BufferedReader br = new BufferedReader(input);
+        String line = br.readLine();
+        objects= JSON.parseArray(line, Object.class);
+
+        return objects;
     }
 }
