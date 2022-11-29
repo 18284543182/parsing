@@ -14,8 +14,8 @@ import java.lang.reflect.Field;
  * @Description:
  */
 @Service
-@Mapper(type = "Spaceweathers4Uhfband", getAction = SpaceWeatherS4Uhfband.class)
-public class Spaceweathers4Uhfbandaction implements MessageAction<SpaceWeatherS4Uhfband> {
+@Mapper(type = "SpaceWeatherS4Uhfband", getAction = SpaceWeatherS4Uhfband.class)
+public class Spaceweathers4UhfbandAction implements MessageAction<SpaceWeatherS4Uhfband> {
     @Override
     public Object doAction(HandlerMessage<SpaceWeatherS4Uhfband> message) {
         message.getMessage().setPath(message.getSrcFilePath());
