@@ -12,6 +12,16 @@ import lombok.Data;
 public class SpaceWeatherMonitoringSrs extends Message{
 
     /**
+     *
+     */
+    public String date;
+
+    /**
+     *
+     */
+    public String time;
+
+    /**
      * 活动区编号
      */
     public String nmbr;

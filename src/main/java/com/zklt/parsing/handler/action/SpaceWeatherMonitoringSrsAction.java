@@ -4,6 +4,7 @@ import cn.hutool.core.io.FileUtil;
 import com.zklt.parsing.handler.MessageAction;
 import com.zklt.parsing.model.entity.HandlerMessage;
 import com.zklt.parsing.model.entity.SpaceWeatherMonitoringSrs;
+import com.zklt.parsing.model.enums.DateEnum;
 import com.zklt.parsing.model.enums.Mapper;
 import org.springframework.stereotype.Service;
 
@@ -37,10 +38,22 @@ public class SpaceWeatherMonitoringSrsAction implements MessageAction<SpaceWeath
         if(file.exists()){
             try{
                 List<String> datas = FileUtil.readLines(file, "UTF-8");
+                String dDtime="";
                 //  判断读取列以数字开头
-                for (String data:datas) {
-                    if(isStartWithNumber(data)){
-                        result.add(data);
+                for (int i=0;i<datas.size();i++) {
+                    if (i==1){
+                        String time = datas.get(i).trim().replaceAll(" +", " ");
+                        String[] times=time.split(" ");
+                        String year=times[1];
+                        String monthint= String.valueOf(DateEnum.valueOf(times[2]).getNum());
+                        String Date=year+"-"+monthint+"-"+times[3];
+                        String hour=times[4].substring(0,2);
+                        String min=times[4].substring(2,4);
+                        dDtime=Date+" "+hour+":"+min+":00";
+                    }
+                    if(isStartWithNumber(datas.get(i))){
+                        String restrs=dDtime+" "+datas.get(i);
+                        result.add(restrs);
                     }
                 }
             }catch (Exception e){
