@@ -40,7 +40,9 @@ public class SpaceWeatherElectronDensityAction implements MessageAction<SpaceWea
         String minute=datetime.substring(10,12);
         String second=datetime.substring(12,14);
 
-        String returnstr=year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second+" "+name;
+        String filename=file.getName();
+
+        String returnstr=year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second+" "+filename;
         result.add(returnstr);
         return result;
     }
