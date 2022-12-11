@@ -31,7 +31,7 @@ public class SpaceWeatherElectronDensityAction implements MessageAction<SpaceWea
         String[] paths=filpath.split("\\\\");
 
         String name=paths[paths.length-1].split("\\.")[0];
-        String[] datetimes=name.split("_");
+        String[] datetimes=name.split(File.separator);
         String datetime=datetimes[datetimes.length-1];
         String year=datetime.substring(0,4);
         String month=datetime.substring(4,6);

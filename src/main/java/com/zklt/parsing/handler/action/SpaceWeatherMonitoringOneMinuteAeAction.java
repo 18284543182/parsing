@@ -48,7 +48,7 @@ public class SpaceWeatherMonitoringOneMinuteAeAction implements MessageAction<Sp
                         String[] dates = line.split(" ");
 
                         String filename=file.getName();
-                        String[] filenames=filename.split("_");
+                        String[] filenames=filename.split(File.separator);
                         String year=filenames[1];
 
                         String identifier=dates[0];
