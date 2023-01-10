@@ -25,22 +25,22 @@ public class SpaceWeatherLonosphericTecScintillation extends Message{
     /**
      * 卫星编号
      */
-    public String prn;
+    public String vPrn;
 
     /**
      * 方位角
      */
-    public String azimuth;
+    public String vAzimuth;
 
     /**
      * 仰角
      */
-    public String elevation;
+    public String vElevation;
 
     /**
      * 强度闪烁指数
      */
-    public String s4;
+    public String vS4;
 
     /**
      * 相位闪烁指数
