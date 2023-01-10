@@ -17,7 +17,7 @@ class ParsingApplicationTests {
 
 	@Test
 	void contextLoads() throws IOException, InstantiationException, IllegalAccessException {
-
+		System.out.println("~~~");
 	}
 
 }
