@@ -47,30 +47,34 @@ public class SpaceWeatherMonitoringOneMinuteAeAction implements MessageAction<Sp
                         line = line.trim().replaceAll(" +", " ");
                         String[] dates = line.split(" ");
 
-                        String filename=file.getName();
-                        String[] filenames=filename.split("_");
-                        String year=filenames[1];
+                        //判断AE的才需要
+                        if (dates[1].contains("AE")){
+                            String filename=file.getName();
+                            String[] filenames=filename.split("_");
+                            String year=filenames[1];
 
-                        String identifier=dates[0];
-                        String editionNumber=dates[2];
-                        String meanvalue=dates[dates.length-1];
+                            String identifier=dates[0];
+                            String editionNumber=dates[2];
+                            String meanvalue=dates[dates.length-1];
 
-                        String date=year+"-"+dates[1].substring(2,4)+"-"+dates[1].substring(4,6);
-                        String hour=dates[1].substring(7,9);
+                            String date=year+"-"+dates[1].substring(2,4)+"-"+dates[1].substring(4,6);
+                            String hour=dates[1].substring(7,9);
 
-                        int h=0;
-                        for (int j=3;j<dates.length-1;j++) {
-                            String value=dates[j];
-                            String time="";
-                            if (h<10) {
-                                time=hour+":"+"0"+h+":00";
-                            }else {
-                                time=hour+":"+h+":00";
+                            int h=0;
+                            for (int j=3;j<dates.length-1;j++) {
+                                String value=dates[j];
+                                String time="";
+                                if (h<10) {
+                                    time=hour+":"+"0"+h+":00";
+                                }else {
+                                    time=hour+":"+h+":00";
+                                }
+                                String returnstr=date+" "+time+" "+identifier+" "+editionNumber+" "+value+" "+meanvalue;
+                                result.add(returnstr);
+                                h++;
                             }
-                            String returnstr=date+" "+time+" "+identifier+" "+editionNumber+" "+value+" "+meanvalue;
-                            result.add(returnstr);
-                            h++;
                         }
+
                     }
                 }
             } catch (IOException e) {
