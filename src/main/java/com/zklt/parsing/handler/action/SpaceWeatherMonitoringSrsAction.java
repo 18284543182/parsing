@@ -51,6 +51,10 @@ public class SpaceWeatherMonitoringSrsAction implements MessageAction<SpaceWeath
                         String min=times[4].substring(2,4);
                         dDtime=Date+" "+hour+":"+min+":00";
                     }
+                    if (datas.get(i).contains("H-alpha")){
+                        break;
+
+                    }
                     if(isStartWithNumber(datas.get(i))){
                         String restrs=dDtime+" "+datas.get(i);
                         result.add(restrs);
