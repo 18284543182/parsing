@@ -1,27 +1,21 @@
 package com.zklt.parsing.handler.action;
 
+import com.google.common.collect.Lists;
 import com.zklt.parsing.handler.MessageAction;
 import com.zklt.parsing.handler.utils.DateUtil;
 import com.zklt.parsing.model.entity.AvgElectronFluxTab;
 import com.zklt.parsing.model.entity.HandlerMessage;
-import com.zklt.parsing.model.entity.SpaceWeatherLaserRadarSodiumDensity;
-import com.zklt.parsing.model.entity.nc.NcData;
-import com.zklt.parsing.model.entity.nc.NcUtilsImpl;
+import com.zklt.parsing.model.entity.nc.NcReadUttil;
 import com.zklt.parsing.model.entity.nc.tab.NcElectronEnum;
 import com.zklt.parsing.model.enums.Mapper;
 import org.springframework.stereotype.Service;
-import ucar.ma2.InvalidRangeException;
-import ucar.nc2.NetcdfFile;
-import ucar.nc2.Variable;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Map;
 
 /**
  * @author wurui
@@ -31,9 +25,8 @@ import java.util.stream.Stream;
 @Service
 @Mapper(type = "AvgElectronFluxTab", getAction = AvgElectronFluxTab.class)
 public class AvgElectronFluxTabAction implements MessageAction<AvgElectronFluxTab> {
-    List<String> strs = Stream.of("AvgDiffElectronFlux", "AvgDiffElectronFluxUncert", "AvgIntElectronFlux", "AvgIntElectronFluxUncert").collect(Collectors.toList());
-    private NcUtilsImpl ncUtils = new NcUtilsImpl();
     private long fiveMin = 1000 * 60 * 5;
+    private static final String VARIABLE_NAME = "AvgDiffElectronFlux";
 
     @Override
     public Object doAction(HandlerMessage<AvgElectronFluxTab> message) {
@@ -43,115 +36,72 @@ public class AvgElectronFluxTabAction implements MessageAction<AvgElectronFluxTa
 
     @Override
     public List<String> readFile(File file) {
-
         List<String> result = new ArrayList<>();
-        String filename=file.getPath();
-
-        List<AvgElectronFluxTab> list = new ArrayList<>();
-        NetcdfFile ncfile = null;
+        String filePath=file.getPath();
         try {
-            ncfile = NetcdfFile.open(filename);
+            List<String> shortNames = Lists.newArrayList(VARIABLE_NAME);
+            NcReadUttil.NcResult ncResult = NcReadUttil.read(shortNames, filePath);
+            Map<String, Object> valMap = ncResult.getVals();
+            Float[][][] ats = (Float[][][]) valMap.get(VARIABLE_NAME);
 
-            List<Variable> variables = ncfile.getVariables();
-            for (Variable v : variables) {
-                String name = v.getName();
-                Integer ident = NcElectronEnum.getName(name);
-                if (!strs.contains(name)) {
-                    continue;
-                }
-                //  AvgIntElectronFlux
-                System.out.println("name=" + v.getName() + " NameAndDimension=" + v.getNameAndDimensions() + " ElementSize=" + v.getElementSize());
-                try {
-                    NcData dataOfSlice = ncUtils.getDataOfSlice(v);
-                    System.out.println(dataOfSlice);
-                    //  原始的二维数组
-                    float[][] data2Df = dataOfSlice.getData2Df();
+            //  创建二维数组,288行10列
+            Float [][] toNewArr =new Float[288][10];
+            List<Float> list = new ArrayList<>();
 
-                    //  按列生成新二维数组
-                    Float[][] toNewArr = oldCastToNewArr(data2Df);
-
-                    for (int j = 0; j < toNewArr.length; j++) {
-                        System.out.println("val=" + toNewArr[j] + "val length=" + toNewArr[j].length);
-                        Date date = new Date();
-                        Date newDate = new Date(date.getTime() + fiveMin * j);
-                        String[] datetime=DateUtil.date2Str(newDate).split(" ");
-                        String datee=datetime[0];
-                        String time=datetime[1];
-                        String returnstrs=ident+" "+datee+" "+time;
-                        for (int i = 0; i < toNewArr[j].length; i++) {
-                            String restr=returnstrs+" "+String.valueOf(toNewArr[j][0])+" "+String.valueOf(toNewArr[j][1])+" "+
-                                    String.valueOf(toNewArr[j][2])+" "+String.valueOf(toNewArr[j][3])+" "+
-                                    String.valueOf(toNewArr[j][4]);
-                            result.add(restr);
+            for (int i = 0; i <ats.length ; i++) {
+                for (int j = 0; j < ats[0].length; j++) {
+                    for (int k = 0; k < ats[0][0].length; k++) {
+                        //  只取第一行数据
+                        if (j!=0){
+                            continue;
                         }
+                        //  循环取的单个数值，并存入集合中
+                        list.add(ats[i][j][k]);
                     }
-                } catch (InvalidRangeException e) {
-                    e.printStackTrace();
                 }
             }
 
+            //  集合转为一维数组
+            Float[] ans2 = list.toArray(new Float[list.size()]);
+            one2Two(ans2,toNewArr);
+            Integer ident = NcElectronEnum.getName(VARIABLE_NAME);
+
+            //上面三式子可视代码相似，所以我们对其进行改进化简
+            for(int i=0;i<toNewArr.length;i++){
+                //控制每个一维数组
+                Date date = new Date();
+                Date newDate = new Date(date.getTime() + fiveMin * i);
+                String[] datetime=DateUtil.date2Str(newDate).split(" ");
+                String datee=datetime[0];
+                String time=datetime[1];
+                String returnstrs=ident+" "+datee+" "+time;
+
+                String restr=returnstrs+" "+toNewArr[i][0]+" "+toNewArr[i][1]+" "+toNewArr[i][2]+" "+toNewArr[i][3]+" "+
+                    toNewArr[i][4]+" "+toNewArr[i][5]+" "+toNewArr[i][6]+" "+toNewArr[i][7]+" "+toNewArr[i][8]+" "+toNewArr[i][9];
+                    result.add(restr);
+                System.out.println();//每执行完一个一维数组换行
+            }
+
+
         } catch (IOException ioe) {
-        } finally {
-            if (null != ncfile)
-                try {
-                    ncfile.close();
-                } catch (IOException ioe) {
-                }
+            ioe.printStackTrace();
         }
         return result;
     }
 
-    /**
-     * 将原始二维数组按照列生成新的二维数组
-     * @param oldArr 原始二维数组
-     * @return
-     */
-    public static Float[][] oldCastToNewArr(float[][] oldArr){
-        //  取出二维数组中的列
-        List<Float> list1 = new ArrayList<>();
-        List<Float> list2 = new ArrayList<>();
-        List<Float> list3 = new ArrayList<>();
-        List<Float> list4 = new ArrayList<>();
-        List<Float> list5 = new ArrayList<>();
-        for(int i = 0; i < oldArr.length; i++){
-            list1.add(oldArr[i][0]);
-            list2.add(oldArr[i][1]);
-            list3.add(oldArr[i][2]);
-            list4.add(oldArr[i][3]);
-            list5.add(oldArr[i][4]);
-        }
-
-        Float[] ans1 = list1.toArray(new Float[list1.size()]);
-        Float[] ans2 = list2.toArray(new Float[list2.size()]);
-        Float[] ans3 = list3.toArray(new Float[list3.size()]);
-        Float[] ans4 = list4.toArray(new Float[list4.size()]);
-        Float[] ans5 = list5.toArray(new Float[list5.size()]);
-
-        return casrtNewArry(ans1,ans2,ans3,ans4,ans5);
-    }
-
-    //一维数组转化为二维数组
-    public static Float[][] casrtNewArry(Float[] ans1,Float[] ans2,Float[] ans3,Float[] ans4,Float[] ans5){
-        Float[][] newArr = new Float[5][5];
-        newArr[0] = ans1;
-        newArr[1] = ans2;
-        newArr[2] = ans3;
-        newArr[3] = ans4;
-        newArr[4] = ans5;
-
-        //  外循环，用来控制行数
-        for (int i = 0; i < newArr.length; i++) {
-            // （arr静态初始化中一级花括号里面有三个整体元素所以arr）
-            //  内层循环，用来控制列数，二级花括号中的元素有三个，所以arr[i].length=3
-            for (int j = 0; j < newArr[i].length; j++) {
-                //输出语句
-                System.out.print(newArr[i][j] + "  ");
+    /*
+     * 1.传入的数组里两个数组的大小（一维数组length为10，则二维数组的行数乘列数也为10
+     * 2.数组类型必须一样
+     * */
+    public static void one2Two(Float[]data,Float[][] da) {
+        int k = 0;
+        int hang = da.length;
+        int lie = da[0].length;
+        for (int i = 0; i < hang; i++) {
+            for (int j = 0; j < lie; j++) {
+                da[i][j] = data[k];
+                k++;
             }
-            //输出完第一行元素后换行
-            System.out.println();
         }
-        return newArr;
     }
-
-
 }

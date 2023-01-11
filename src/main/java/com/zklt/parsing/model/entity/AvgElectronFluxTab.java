@@ -54,6 +54,26 @@ public class AvgElectronFluxTab extends Message{
      * 通道5
      */
     public String channel5;
+    /**
+     * 通道6
+     */
+    public String channel6;
+    /**
+     * 通道7
+     */
+    public String channel7;
+    /**
+     * 通道8
+     */
+    public String channel8;
+    /**
+     * 通道9
+     */
+    public String channel9;
+    /**
+     * 通道10
+     */
+    public String channel10;
 
 
 
