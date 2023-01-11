@@ -10,40 +10,16 @@ import lombok.Data;
 @Data
 public class SpaceWeatherMonitoringAceSwepam extends Message{
 
-    /**
-     * 年
-     */
-    public String year;
-
-    /**
-     * 月
-     */
-    public String month;
-
-    /**
-     * 日
-     */
-    public String day;
-
-    /**
-     * 时分 数据是合在一起的
-     */
-    public String hhmm;
 
     /**
      *
      */
-    public String day1;
+    public String date;
 
     /**
      *
      */
-    public String day2;
-
-    /**
-     *状态
-     */
-    public String s;
+    public String time;
 
     /**
      *密度
