@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 public class SolarAtmosphereXrayFluxTab extends Message{
 
-    public String ident;
 
     public String date;
 
@@ -20,6 +19,11 @@ public class SolarAtmosphereXrayFluxTab extends Message{
     /**
      * 通道1
      */
-    public String channel1;
+    public String xrsa1Flux;
+
+    /**
+     * 通道2
+     */
+    public String xrsa2Flux;
 
 }

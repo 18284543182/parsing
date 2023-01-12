@@ -10,7 +10,9 @@ public enum NcXrayEnum {
     XRSA_FLAG("xrsa_flag", 1),
 
 
-    XRSA_FLAG_EXCLUDED("xrsa_flag_excluded", 2);
+    XRSA_FLAG_EXCLUDED("xrsa_flag_excluded", 2),
+
+    XRSA2_FLUX("xrsa2_flux", 3);
 
 
     private String attrrName;
