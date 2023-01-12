@@ -63,126 +63,182 @@ public class SpaceWeatherMonitoringDstAction implements MessageAction<SpaceWeath
                             if (dayi<10){
                                 day="0"+dayi;
                             }
+                            if (dayi==10){
+                                System.out.println("sdkfh");
+                            }
 
-                            String dst1=line.substring(2,7);
-                            time_tag=yy+"-"+day+" 01:00:00";
-                            String returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            String dst1=line.substring(2,7).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 01:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(7,11);
-                            time_tag=yy+"-"+day+" 02:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(7,11).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 02:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(11,15);
-                            time_tag=yy+"-"+day+" 03:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(11,15).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 03:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(15,19);
-                            time_tag=yy+"-"+day+" 04:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(15,19).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 04:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(19,23);
-                            time_tag=yy+"-"+day+" 05:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(19,23).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 05:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(23,27);
-                            time_tag=yy+"-"+day+" 06:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(23,27).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 06:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(27,31);
-                            time_tag=yy+"-"+day+" 07:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(27,31).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 07:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(31,35);
-                            time_tag=yy+"-"+day+" 08:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
 
-                            dst1=line.substring(35,40);
-                            time_tag=yy+"-"+day+" 09:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(31,35).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 08:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(40,44);
-                            time_tag=yy+"-"+day+" 10:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(35,40).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 09:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(44,48);
-                            time_tag=yy+"-"+day+" 11:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(40,44).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 10:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(48,52);
-                            time_tag=yy+"-"+day+" 12:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
 
-                            dst1=line.substring(52,56);
-                            time_tag=yy+"-"+day+" 13:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(44,48).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 11:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(56,60);
-                            time_tag=yy+"-"+day+" 14:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
 
-                            dst1=line.substring(60,64);
-                            time_tag=yy+"-"+day+" 15:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(48,52).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 12:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(64,68);
-                            time_tag=yy+"-"+day+" 16:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(52,56).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 13:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(68,73);
-                            time_tag=yy+"-"+day+" 17:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(56,60).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 14:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(73,77);
-                            time_tag=yy+"-"+day+" 18:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
 
-                            dst1=line.substring(77,81);
-                            time_tag=yy+"-"+day+" 19:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(60,64).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 15:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(81,85);
-                            time_tag=yy+"-"+day+" 20:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(64,68).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 16:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(85,89);
-                            time_tag=yy+"-"+day+" 21:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(68,73).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 17:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(89,93);
-                            time_tag=yy+"-"+day+" 22:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(73,77).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 18:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(93,97);
-                            time_tag=yy+"-"+day+" 23:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(77,81).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 19:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
 
-                            dst1=line.substring(97,101);
-                            time_tag=yy+"-"+day+" 24:00:00";
-                            returndata=time_tag+" "+dst1;
-                            result.add(returndata);
+                            dst1=line.substring(81,85).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 20:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
+
+                            dst1=line.substring(85,89).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 21:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
+
+                            dst1=line.substring(89,93).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 22:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
+
+                            dst1=line.substring(93,97).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 23:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
+
+                            dst1=line.substring(97,101).trim();
+                            if (!"9999".equals(dst1)){
+                                time_tag=yy+"-"+day+" 24:00:00";
+                                String returndata=time_tag+" "+dst1;
+                                result.add(returndata);
+                            }
+
                         }
                     }
                 }
