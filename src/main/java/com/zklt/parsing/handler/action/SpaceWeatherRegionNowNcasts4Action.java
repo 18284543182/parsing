@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -42,12 +43,15 @@ public class SpaceWeatherRegionNowNcasts4Action implements MessageAction<SpaceWe
                 String date="";
                 String time="";
 
-                String lats="";
-                String late="";
-                String latstep="";
-                String lons="";
-                String lone="";
-                String lonstep="";
+                BigDecimal lats=new BigDecimal("0");
+                BigDecimal latsnew= new BigDecimal("0");
+                BigDecimal late=new BigDecimal("0");
+                BigDecimal latstep=new BigDecimal("0");
+
+                BigDecimal lons=new BigDecimal("0");
+                BigDecimal lone=new BigDecimal("0");
+                BigDecimal lonstep=new BigDecimal("0");
+
                 String all="";
                 for (int i = 0;i<countLine+1;i++){
                     line = br.readLine();
@@ -61,16 +65,24 @@ public class SpaceWeatherRegionNowNcasts4Action implements MessageAction<SpaceWe
                         }else if (i==1){
                             line = line.trim().replaceAll(" +", " ");
                             String[] strs=line.split(" ");
-                            lats=strs[0];
-                            late=strs[1];
-                            latstep=strs[2];
-                            lons=strs[3];
-                            lone=strs[4];
-                            lonstep=strs[5];
+                            lats= new BigDecimal(strs[0]);
+                            latsnew= new BigDecimal(strs[0]);
+                            late=new BigDecimal(strs[1]);
+                            latstep=new BigDecimal(strs[2]);
+                            lons=new BigDecimal(strs[3]);
+                            lone=new BigDecimal(strs[4]);
+                            lonstep=new BigDecimal(strs[5]);
                             all=date+" "+time+" "+lats+" "+late+" "+latstep+" "+lons+" "+lone+" "+lonstep;
                         }else {
-                            String allre=all+" "+line;
-                            result.add(allre);
+                            BigDecimal lonsnew=lons;
+                            line = line.trim().replaceAll(" +", " ");
+                            String[] dates=line.split(" ");
+                            for (String str:dates){
+                                String allre=all+" "+latsnew+" "+lonsnew+" "+str;
+                                result.add(allre);
+                                lonsnew=lonsnew.add(lonstep);
+                            }
+                            latsnew=latsnew.add(latstep);
                         }
 
                     }

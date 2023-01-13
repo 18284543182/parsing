@@ -42,6 +42,16 @@ public class SolarWindPlasmaOmnlTab extends Message{
     public String swId;
 
     /**
+     * 国际货币基金组织平均值的积分I4
+     */
+    public String pointsInImfAverages;
+
+    /**
+     * Plasma平均值I4中的点数
+     */
+    public String pointsInPlasmaAverages;
+
+    /**
      * 插入百分比
      */
     public String percentInterp;
@@ -234,13 +244,19 @@ public class SolarWindPlasmaOmnlTab extends Message{
 
     public String magnetosonicMachNumber;
 
+    /**
+     * Proton Flux >10 MeV, 1/(cm**2-sec-ster)  F9.2 See  footnote J below
+     */
     public String no1;
 
+    /**
+     * Proton Flux >30 MeV, 1/(cm**2-sec-ster)  F9.2
+     */
     public String no2;
 
+    /**
+     * Proton Flux >60 MeV, 1/(cm**2-sec-ster)  F9.2
+     */
     public String no3;
 
-    public String no4;
-
-    public String no5;
 }
