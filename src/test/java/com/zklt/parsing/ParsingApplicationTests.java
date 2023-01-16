@@ -21,11 +21,9 @@ class ParsingApplicationTests {
 
 	private static String SPACE = "   ";
 
-
-
 	@Test
 	void contextLoads() throws IOException, InstantiationException, IllegalAccessException {
-		List dataList = parsingHandler.getDataList("C:\\Users\\xj\\Desktop\\文件解析源文件\\空间天气历史1111新增\\空间天气历史1111新增\\空间天气要素\\太阳大气\\GOES16 X射线通量\\2022\\sci_xrsf-l2-avg1m_g16_d20220124_v2-1-0.nc", "SolarAtmosphereXrayFluxTab");
+		List dataList = parsingHandler.getDataList("D:\\Program Files\\Soft\\WeChat\\Documents\\WeChat Files\\wxid_zw1sn71oralj22\\FileStorage\\File\\2023-01\\omni_5min1985.asc", "SpaceWeatherThroughDoorMagnetometer");
 		Map<String,List<Object>> map = new HashMap<>();
 		map.put("result",dataList);
 		String jsonString = JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);
