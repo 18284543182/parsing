@@ -11,9 +11,11 @@ import lombok.Data;
 @Data
 public class SpacDlctScaledTab extends Message {
 
-    public String v01300;
+    public String stationCode;
 
-    public String dRymdhm;
+    public String date;
+
+    public String time;
 
     public String fof2;
 
