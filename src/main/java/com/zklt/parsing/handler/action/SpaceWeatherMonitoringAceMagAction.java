@@ -5,7 +5,9 @@ import com.zklt.parsing.handler.MessageAction;
 import com.zklt.parsing.model.entity.HandlerMessage;
 import com.zklt.parsing.model.entity.SpaceWeatherMonitoringAceMag;
 import com.zklt.parsing.model.enums.Mapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StopWatch;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +24,7 @@ import java.util.List;
  * @Description:
  */
 @Service
+@Slf4j
 @Mapper(type = "SpaceWeatherMonitoringAceMag", getAction = SpaceWeatherMonitoringAceMag.class)
 public class SpaceWeatherMonitoringAceMagAction implements MessageAction<SpaceWeatherMonitoringAceMag> {
 
@@ -33,6 +36,9 @@ public class SpaceWeatherMonitoringAceMagAction implements MessageAction<SpaceWe
 
     @Override
     public List<String> readFile(File file) {
+        StopWatch stopWatch = new StopWatch("磁场三分量、总磁场");
+        stopWatch.start();
+        log.info("StopWatch start '" + stopWatch.getId() + "': running time (millis) = " + stopWatch.getTotalTimeMillis());
         List<String> result = new ArrayList<>();
         try {
             List<Object> objects=new ArrayList<>();
@@ -56,7 +62,8 @@ public class SpaceWeatherMonitoringAceMagAction implements MessageAction<SpaceWe
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        log.info("StopWatch stop '" + stopWatch.getId() + "': running time (millis) = " + stopWatch.getTotalTimeMillis());
+        stopWatch.stop();
         return result;
     }
 }

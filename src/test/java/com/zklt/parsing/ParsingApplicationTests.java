@@ -23,7 +23,7 @@ class ParsingApplicationTests {
 
 	@Test
 	void contextLoads() throws IOException, InstantiationException, IllegalAccessException {
-		List dataList = parsingHandler.getDataList("D:\\Program Files\\Soft\\WeChat\\Documents\\WeChat Files\\wxid_zw1sn71oralj22\\FileStorage\\File\\2023-01\\omni_5min1985.asc", "SpaceWeatherThroughDoorMagnetometer");
+		List dataList = parsingHandler.getDataList("D:\\plasma-7-day.json", "SpaceWeatherMonitoringAceSwepam");
 		Map<String,List<Object>> map = new HashMap<>();
 		map.put("result",dataList);
 		String jsonString = JSON.toJSONString(map, SerializerFeature.WriteMapNullValue);

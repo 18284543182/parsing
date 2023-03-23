@@ -5,7 +5,9 @@ import com.zklt.parsing.handler.MessageAction;
 import com.zklt.parsing.model.entity.HandlerMessage;
 import com.zklt.parsing.model.entity.SpaceWeatherMonitoringAceSwepam;
 import com.zklt.parsing.model.enums.Mapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StopWatch;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,6 +24,7 @@ import java.util.List;
  * @Description:
  */
 @Service
+@Slf4j
 @Mapper(type = "SpaceWeatherMonitoringAceSwepam", getAction = SpaceWeatherMonitoringAceSwepam.class)
 public class SpaceWeatherMonitoringAceSwepamAction implements MessageAction<SpaceWeatherMonitoringAceSwepam> {
     @Override
@@ -32,6 +35,9 @@ public class SpaceWeatherMonitoringAceSwepamAction implements MessageAction<Spac
 
     @Override
     public List<String> readFile(File file) {
+        StopWatch stopWatch = new StopWatch("太阳风等离子体速度、密度、温度");
+        stopWatch.start();
+        log.info("StopWatch start '" + stopWatch.getId() + "': running time (millis) = " + stopWatch.getTotalTimeMillis());
         List<String> result = new ArrayList<>();
         try {
             List<Object> objects=new ArrayList<>();
@@ -53,7 +59,8 @@ public class SpaceWeatherMonitoringAceSwepamAction implements MessageAction<Spac
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        log.info("StopWatch stop '" + stopWatch.getId() + "': running time (millis) = " + stopWatch.getTotalTimeMillis());
+        stopWatch.stop();
         return result;
     }
 }

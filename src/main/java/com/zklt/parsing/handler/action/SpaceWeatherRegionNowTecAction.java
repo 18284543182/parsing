@@ -5,7 +5,9 @@ import com.zklt.parsing.model.entity.HandlerMessage;
 import com.zklt.parsing.model.entity.SpaceWeatherRegionNowNcasts4;
 import com.zklt.parsing.model.entity.SpaceWeatherRegionNowTec;
 import com.zklt.parsing.model.enums.Mapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StopWatch;
 import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
@@ -24,6 +26,7 @@ import java.util.List;
  * @Description:
  */
 @Service
+@Slf4j
 @Mapper(type = "SpaceWeatherRegionNowTec", getAction = SpaceWeatherRegionNowTec.class)
 public class SpaceWeatherRegionNowTecAction implements MessageAction<SpaceWeatherRegionNowTec> {
     @Override
@@ -34,6 +37,9 @@ public class SpaceWeatherRegionNowTecAction implements MessageAction<SpaceWeathe
 
     @Override
     public List<String> readFile(File file) {
+        StopWatch stopWatch = new StopWatch("区域tec");
+        stopWatch.start();
+        log.info("StopWatch start '" + stopWatch.getId() + "': running time (millis) = " + stopWatch.getTotalTimeMillis());
         List<String> result = new ArrayList<>();
         if(file.exists())
         {
@@ -93,7 +99,8 @@ public class SpaceWeatherRegionNowTecAction implements MessageAction<SpaceWeathe
                 e.printStackTrace();
             }
         }
-
+        log.info("StopWatch stop '" + stopWatch.getId() + "': running time (millis) = " + stopWatch.getTotalTimeMillis());
+        stopWatch.stop();
         return result;
     }
 }
